@@ -23,3 +23,11 @@ journal at the end of the week. This was not ideal, as I would often forget to s
 He eventually graduated to Excel spreadsheets. However, I think that the spreadsheets are not ideal  
 either. This personal project will improve both my and my coach's life.
 
+## User Stories  
+
+As a user, I want to be able to:
+
+- add an exercise to a workout
+- create different workouts for different days
+- modify workouts after they are created
+- add comments to exercises or workouts
