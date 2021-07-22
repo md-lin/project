@@ -1,11 +1,25 @@
-# My Personal Project
+# Melissa Lin's Personal Project
 
-## A subtitle
+## What is this project?
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+My project will be a workout programming application. The application can be used by athletes to  
+create their own workouts, for coaches to send workouts to their athletes, and for athletes to  
+send feedback to their coaches about their workouts.
 
-An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
-the bold and italic fonts correctly but they will appear correctly on GitHub.
+This project is geared towards:
+- weightlifting athletes/coaches
+- athletes who require supplemental strength training
+- casual gym-goers
+
+Although the project is aimed towards usage in the gym, the application will be flexible. For  
+example, it may also be used to program workouts for figure skaters or athletes in other sports.
+
+## Why is this project of interest to me?
+
+I have a personal investment in this project because my weightlifting coach does not have a great  
+way of communicating with his athletes. When I first began training with him, he sent me Word  
+documents with my workouts. I would record how the workout went in a journal and show him the  
+journal at the end of the week. This was not ideal, as I would often forget to show him the journal.  
+He eventually graduated to Excel spreadsheets. However, I think that the spreadsheets are not ideal  
+either. This personal project will improve both my and my coach's life.
+
