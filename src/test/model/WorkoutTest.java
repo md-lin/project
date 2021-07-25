@@ -23,6 +23,19 @@ public class WorkoutTest {
     }
 
     @Test
+    public void WorkoutNameTest() {
+        Workout workout1 = new Workout("day 1");
+        assertEquals("day 1", workout1.getName());
+    }
+
+    @Test
+    public void WorkoutNameCommentTest() {
+        Workout workout2 = new Workout("day 2", "don't die");
+        assertEquals("day 2", workout2.getName());
+        assertEquals("don't die", workout2.getCoachComment());
+    }
+
+    @Test
     public void setNameTest() {
         workout.setName("day 1");
         assertEquals("day 1", workout.getName());
