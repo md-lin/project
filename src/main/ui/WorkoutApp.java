@@ -72,7 +72,7 @@ public class WorkoutApp {
     //MODIFIES: this
     //EFFECTS: initializes workouts
     private void init() {
-        day1 = new Workout("day1", "good luck with this one, it's a doozy");
+        day1 = new Workout("day1", "goodluck!");
         day2 = new Workout("day2");
         input = new Scanner(System.in);
 
@@ -86,14 +86,14 @@ public class WorkoutApp {
     //EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("Your wish is my command.");
-        System.out.println("\texercises-view");
-        System.out.println("\texercises-add");
-        System.out.println("\texercises-remove");
-        System.out.println("\texercises-modify");
-        System.out.println("\tathlete-comments-view");
-        System.out.println("\tcoach-comments-view");
-        System.out.println("\tathlete-comments-add");
-        System.out.println("\tcoach-comments-add");
+        System.out.println("\texercises-view to view exercises");
+        System.out.println("\texercises-add to add exercises");
+        System.out.println("\texercises-remove to remove exercises");
+        System.out.println("\texercises-modify to modify exercises");
+        System.out.println("\tathlete-comments-view to view athlete comments");
+        System.out.println("\tcoach-comments-view to view coach comments");
+        System.out.println("\tathlete-comments-add to add athlete comments");
+        System.out.println("\tcoach-comments-add to add coach comments");
         System.out.println("\tquit");
     }
 
@@ -162,7 +162,7 @@ public class WorkoutApp {
         if (selected.findExercise(name) == -1) {
             System.out.println("exercise does not exist????");
         } else {
-            Exercise exercise = selected.getExercises().get(selected.findExercise(name));
+            Exercise exercise = selected.getExercises().get(selected.findExercise(name) - 1);
             modifyExercise(exercise);
         }
     }
@@ -243,6 +243,7 @@ public class WorkoutApp {
     private void addAthleteComments() {
         Workout selected = selectWorkout();
         System.out.println("enter your comment!");
+
         String comment = input.next();
 
         selected.setAthleteComment(comment);
@@ -276,37 +277,5 @@ public class WorkoutApp {
         }
     }
 
-    //EFFECTS: prompts user to select a workout and returns it
-//    private Workout selectWorkout() {
-//        String selection = "";  // force entry into loop
-//
-//        while (!(selection.equals("1") || selection.equals("2"))) {
-//            System.out.println("Select a workout:");
-//            System.out.println("1 for " + day1.getName());
-//            System.out.println("2 for " + day2.getName());
-//            selection = input.next();
-//        }
-//
-//        if (selection.equals("1")) {
-//            return day1;
-//        } else {
-//            return day2;
-//        }
-//
-//    }
 
-//    //EFFECTS: displays workout menu to athletes
-//    private void displayAthleteMenu() {
-//
-//    }
-
-//    //EFFECTS: selects a workout to view or modify with coach permissions
-//    private void coachMenu() {
-//        Workout selected = selectWorkout();
-//    }
-//
-//    //EFFECTS: displays workout menu to coaches
-//    private void displayCoachMenu() {
-//
-//    }
 }
