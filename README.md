@@ -29,6 +29,6 @@ other coaches and athletes.
 As a user, I want to be able to:
 
 - add an arbitrary number of exercises to a workout
-- create different workouts for different days
-- modify workouts after they are created
+- modify the name/exercises of a workout
+- select a workout and view its exercises  
 - add comments to exercises or workouts

@@ -1,5 +1,7 @@
 package model;
 
+//test package for workout class
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -119,5 +121,8 @@ public class WorkoutTest {
     public void findExerciseFalseTest() {
         assertEquals(-1, workout.findExercise("neck curls"));
     }
+
+    @Test
+    public void findExerciseSimilarTest() { assertEquals(-1, workout.findExercise("bicep")); }
 
 }

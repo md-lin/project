@@ -1,7 +1,7 @@
 package model;
 
 //represents a workout with a name, athlete comment, coach comment, and a list of exercises
-//each exercise must have a unique name
+//INVARIANT: each exercise must have a unique name
 
 import java.sql.Array;
 import java.util.ArrayList;

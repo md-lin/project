@@ -1,6 +1,6 @@
 package model;
 
-// represents an exercise which includes a name, sets, reps, and a comment from
+// represents an exercise which includes a name, sets, reps, weight, and a comment from
 // either coach or athlete if applicable
 
 public class Exercise {

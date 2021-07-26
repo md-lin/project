@@ -1,5 +1,7 @@
 package model;
 
+//test package for exercise class
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
