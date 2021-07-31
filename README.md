@@ -30,5 +30,7 @@ As a user, I want to be able to:
 
 - add an arbitrary number of exercises to a workout
 - modify the name/exercises of a workout
-- select a workout and view its exercises  
-- add comments to exercises or workouts
+- select a workout and view its exercises
+- add comments to workouts
+- save my workout to file
+- load my workout from file

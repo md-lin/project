@@ -13,6 +13,7 @@ public class Workout {
     private String coachComment;
     private ArrayList<Exercise> exercises;
 
+    //EFFECTS: creates a workout with no name, comments, and an empty list of exercises
     public Workout() {
         this.name = "";
         this.athleteComment = "";
@@ -20,6 +21,7 @@ public class Workout {
         this.exercises = new ArrayList<>();
     }
 
+    //EFFECTS: creates a workout with a name, no comments, and an empty list of exercises
     public Workout(String name) {
         this.name = name;
         this.athleteComment = "";
@@ -27,6 +29,7 @@ public class Workout {
         this.exercises = new ArrayList<>();
     }
 
+    //EFFECTS: creates a workout with a name, coachComment, and an empty list of exercises
     public Workout(String name, String coachComment) {
         this.name = name;
         this.athleteComment = "";

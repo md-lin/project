@@ -11,6 +11,7 @@ public class Exercise {
     private String athleteComment;
     private String coachComment;
 
+    //EFFECTS: creates an exercise with name, sets, reps, weight
     public Exercise(String name, int sets, int reps, int weight) {
         this.name = name;
         this.sets = sets;

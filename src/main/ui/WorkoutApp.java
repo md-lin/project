@@ -3,7 +3,7 @@ package ui;
 // user interface for workout app
 
 // UI Functionality and methods are implemented from Teller App. Link below:
-// !!!
+// https://github.students.cs.ubc.ca/CPSC210/TellerApp
 
 import model.Exercise;
 import model.Workout;
