@@ -2,11 +2,11 @@
     "athleteComment": "",
     "exercises": [{
         "athleteComment": "",
-        "reps": 10,
-        "sets": 3,
+        "reps": 2,
+        "sets": 2,
         "coachComment": "",
-        "name": "RDL",
-        "weight": 1000
+        "name": "dl",
+        "weight": 2
     }],
     "coachComment": "",
     "name": "day2"
