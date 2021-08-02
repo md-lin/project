@@ -22,6 +22,12 @@ public class JsonWriter {
         this.destination = destination;
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets destination of writer
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
     // MODIFIES: this
     // EFFECTS: opens writer; throws FileNotFoundException if destination file cannot
     // be opened for writing

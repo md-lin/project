@@ -20,6 +20,7 @@ import java.util.Scanner;
 
 public class WorkoutApp {
     private static final String SLOT_ONE = "./data/slotOne.json";
+    private static final String SLOT_TWO = "./data/slotTwo.json";
     private Workout workout1;
     private Workout workout2;
     private Scanner input;
@@ -86,14 +87,17 @@ public class WorkoutApp {
     //EFFECTS: initializes workouts
     private void init() {
         workout1 = new Workout("day1", "goodluck!");
-        workout2 = new Workout();
-        input = new Scanner(System.in);
-        jsonWriter = new JsonWriter(SLOT_ONE);
-        jsonReader = new JsonReader(SLOT_ONE);
-
+        workout1.setSlot(SLOT_ONE);
         workout1.addExercise("backsquat", 3,5,130);
         workout1.addExercise("snatch", 3,2,65);
         workout1.addExercise("sndeadlift", 3,3,91);
+
+        workout2 = new Workout("day2");
+        workout2.setSlot(SLOT_TWO);
+
+        input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(SLOT_ONE);
+        jsonReader = new JsonReader(SLOT_ONE);
     }
 
     //EFFECTS: displays menu of options to user
@@ -274,7 +278,6 @@ public class WorkoutApp {
 
     }
 
-
     //EFFECTS: prompts user to select day1 or day2 workout and returns it
     private Workout selectWorkout() {
         String selection = "";  // force entry into loop
@@ -292,26 +295,54 @@ public class WorkoutApp {
         }
     }
 
+    //EFFECTS: prompts user to select a save slot and returns the workout in that slot
+    private Workout selectSlot() {
+        String selection = "";  // force entry into loop
+
+        while (!(selection.equals("1") || selection.equals("2"))) {
+            System.out.println("1 for file 1: " + workout1.getName());
+            System.out.println("2 for file 2: " + workout2.getName());
+            selection = input.next();
+        }
+
+        if (selection.equals("1")) {
+            return workout1;
+        } else {
+            return workout2;
+        }
+    }
+
+
     //EFFECTS: saves workout to file
     private void saveWorkout() {
+        Workout selected = selectSlot();
+        String slot = selected.getSlot();
+
+        jsonWriter.setDestination(slot);
+
         try {
             jsonWriter.open();
-            jsonWriter.write(workout2);
+            jsonWriter.write(selected);
             jsonWriter.close();
-            System.out.println("Saved " + workout2.getName() + " to " + SLOT_ONE);
+            System.out.println("Saved " + selected.getName() + " to " + slot);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + SLOT_ONE);
+            System.out.println("Unable to write to file: " + slot);
         }
     }
 
     //MODIFIES: this
     //EFFECTS: loads workout from file
     private void loadWorkout() {
+        Workout selected = selectSlot();
+        String slot = selected.getSlot();
+
+        jsonReader.setSource(slot);
+
         try {
-            workout2 = jsonReader.read();
-            System.out.println("Loaded " + workout2.getName() + " from " + SLOT_ONE);
+            selected = jsonReader.read();
+            System.out.println("Loaded " + selected.getName() + " from " + slot);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + SLOT_ONE);
+            System.out.println("Unable to read from file: " + slot);
         }
     }
 
