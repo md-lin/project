@@ -18,6 +18,12 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class JsonReaderTest extends JsonTest{
 
     @Test
+    void testSetSource() {
+        JsonReader reader = new JsonReader("theSOURCE");
+        assertEquals("theSOURCE", reader.getSource());
+    }
+
+    @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {

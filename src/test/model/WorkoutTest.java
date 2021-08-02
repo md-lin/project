@@ -56,6 +56,12 @@ public class WorkoutTest {
     }
 
     @Test
+    public void setSlotTest() {
+        workout.setSlot("thisistheslot");
+        assertEquals("thisistheslot", workout.getSlot());
+    }
+
+    @Test
     public void addExerciseTest() {
         workout.addExercise("snatch", 1, 1, 90);
 

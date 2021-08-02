@@ -28,6 +28,11 @@ public class JsonWriter {
         this.destination = destination;
     }
 
+    //EFFECTS: gets destination of writer
+    public String getDestination() {
+        return this.destination;
+    }
+
     // MODIFIES: this
     // EFFECTS: opens writer; throws FileNotFoundException if destination file cannot
     // be opened for writing

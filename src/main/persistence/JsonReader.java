@@ -30,6 +30,11 @@ public class JsonReader {
         this.source = source;
     }
 
+    //EFFECTS: gets source of reader
+    public String getSource() {
+        return this.source;
+    }
+
     // EFFECTS: reads workout from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Workout read() throws IOException {

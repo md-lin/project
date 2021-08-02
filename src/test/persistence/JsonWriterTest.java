@@ -16,6 +16,12 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class JsonWriterTest extends JsonTest {
 
     @Test
+    void testSetSource() {
+        JsonWriter writer = new JsonWriter("theDESTINATION");
+        assertEquals("theDESTINATION", writer.getDestination());
+    }
+
+    @Test
     void testWriterInvalidFile() {
         try {
             Workout wo = new Workout("Melissa's workout!");
