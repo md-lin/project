@@ -64,6 +64,10 @@ public class WorkoutApp {
             addAthleteComments();
         } else if (command.equals("coach-comments-add")) {
             addCoachComments();
+        } else if (command.equals("save-file")){
+            //TODO: ADD STUFF
+        } else if (command.equals("load-file")){
+            //TODO: ADD STUFF
         } else {
             System.out.println("Invalid selection you baboon >:C \n");
         }

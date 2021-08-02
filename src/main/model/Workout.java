@@ -75,6 +75,9 @@ public class Workout {
         return this.exercises;
     }
 
+    //EFFECTS: returns number of exercises
+    public int numExercises() { return exercises.size(); }
+
     //MODIFIES: this
     //EFFECTS: add exercise with given name, sets, and reps to end of workout
     public void addExercise(String name, int sets, int reps, int weight) {
