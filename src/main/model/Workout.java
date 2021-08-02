@@ -91,7 +91,9 @@ public class Workout implements Writable {
     }
 
     //EFFECTS: returns number of exercises
-    public int numExercises() { return exercises.size(); }
+    public int numExercises() {
+        return exercises.size();
+    }
 
     //MODIFIES: this
     //EFFECTS: add exercise to end of workout
