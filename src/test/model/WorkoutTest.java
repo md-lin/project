@@ -64,6 +64,16 @@ public class WorkoutTest {
     }
 
     @Test
+    public void addExerciseWithCommentsTest() {
+        workout.addExercise("boop", 1, 1, 90,"yert", "yuh");
+
+        List<Exercise> exercises = workout.getExercises();
+        assertEquals("boop", exercises.get(exercises.size() - 1).getName());
+        assertEquals("yert", exercises.get(exercises.size() - 1).getAthleteComment());
+        assertEquals("yuh", exercises.get(exercises.size() - 1).getCoachComment());
+    }
+
+    @Test
     public void addTwoExercisesTest() {
         workout.addExercise("clean", 2, 2, 70);
         workout.addExercise("snatch", 1, 1, 90);
