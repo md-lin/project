@@ -1,0 +1,13 @@
+{
+    "athleteComment": "",
+    "exercises": [{
+        "athleteComment": "",
+        "reps": 20,
+        "sets": 10,
+        "coachComment": "",
+        "name": "elton",
+        "weight": 900
+    }],
+    "coachComment": "",
+    "name": "day2"
+}
