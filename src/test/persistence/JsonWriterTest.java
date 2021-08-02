@@ -16,8 +16,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class JsonWriterTest extends JsonTest {
 
     @Test
-    void testSetSource() {
-        JsonWriter writer = new JsonWriter("theDESTINATION");
+    void testSetDestination() {
+        JsonWriter writer = new JsonWriter("asdf;aljdf");
+        writer.setDestination("theDESTINATION");
         assertEquals("theDESTINATION", writer.getDestination());
     }
 

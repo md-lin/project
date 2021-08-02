@@ -19,7 +19,8 @@ public class JsonReaderTest extends JsonTest{
 
     @Test
     void testSetSource() {
-        JsonReader reader = new JsonReader("theSOURCE");
+        JsonReader reader = new JsonReader("asa;lsd;fa");
+        reader.setSource("theSOURCE");
         assertEquals("theSOURCE", reader.getSource());
     }
 
