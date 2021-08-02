@@ -86,7 +86,7 @@ public class WorkoutApp {
     //EFFECTS: initializes workouts
     private void init() {
         workout1 = new Workout("day1", "goodluck!");
-        workout2 = new Workout();
+        workout2 = new Workout("day2");
         input = new Scanner(System.in);
         jsonWriter = new JsonWriter(SLOT_ONE);
         jsonReader = new JsonReader(SLOT_ONE);
