@@ -5,6 +5,7 @@ package persistence;
 // deserialization functionality and methods are implemented from JsonSerializationDemo. Link below:
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
+import model.Workout;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -30,8 +31,8 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of workroom to file
-    public void write(WorkRoom wr) {
-        JSONObject json = wr.toJson();
+    public void write(Workout wo) {
+        JSONObject json = wo.toJson();
         saveToFile(json.toString(TAB));
     }
 
