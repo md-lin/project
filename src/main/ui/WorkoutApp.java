@@ -330,19 +330,44 @@ public class WorkoutApp {
         }
     }
 
-    //MODIFIES: this
-    //EFFECTS: loads workout from file
+    //EFFECTS: selects workout to load from file
     private void loadWorkout() {
-        Workout selected = selectSlot();
-        String slot = selected.getSlot();
+        String selection = "";  // force entry into loop
 
-        jsonReader.setSource(slot);
+        while (!(selection.equals("1") || selection.equals("2"))) {
+            System.out.println("1 for file 1: " + workout1.getName());
+            System.out.println("2 for file 2: " + workout2.getName());
+            selection = input.next();
+        }
 
+        if (selection.equals("1")) {
+            loadWorkoutOne();
+        } else {
+            loadWorkoutTwo();
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workout from file one
+    private void loadWorkoutOne() {
         try {
-            selected = jsonReader.read();
-            System.out.println("Loaded " + selected.getName() + " from " + slot);
+            jsonReader.setSource(SLOT_ONE);
+            workout1 = jsonReader.read();
+            System.out.println("Loaded " + workout1.getName() + " from " + SLOT_ONE);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + slot);
+            System.out.println("Unable to read from file: " + SLOT_ONE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workout from file two
+    private void loadWorkoutTwo() {
+        try {
+            jsonReader.setSource(SLOT_TWO);
+            workout2 = jsonReader.read();
+            System.out.println("Loaded " + workout2.getName() + " from " + SLOT_TWO);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + SLOT_TWO);
         }
     }
 

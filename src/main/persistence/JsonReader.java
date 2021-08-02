@@ -38,7 +38,6 @@ public class JsonReader {
         return parseWorkout(jsonObject);
     }
 
-    //TODO: ddd
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
