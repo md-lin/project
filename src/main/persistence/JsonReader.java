@@ -24,12 +24,6 @@ public class JsonReader {
         this.source = source;
     }
 
-    //MODIFIES: this
-    //EFFECTS: sets source of reader
-    public void setSource(String source) {
-        this.source = source;
-    }
-
     // EFFECTS: reads workout from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Workout read() throws IOException {

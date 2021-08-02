@@ -5,8 +5,6 @@ package persistence;
 // tests are implemented from JsonSerializationDemo. Link below:
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
-//TODO: change jsonreader destinations!!!
-
 import model.Exercise;
 import model.Workout;
 import org.junit.jupiter.api.Test;
@@ -44,7 +42,6 @@ public class JsonReaderTest extends JsonTest{
         }
     }
 
-    //TODO: refactor this test to reflect the test file that you will add (addtest files lol)
     @Test
     void testReaderGeneralWorkout() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralWorkout.json");
