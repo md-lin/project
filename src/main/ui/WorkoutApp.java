@@ -14,12 +14,14 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class WorkoutApp {
-    private Workout day1;
-    private Workout day2;
+    private static final String SLOT_ONE = "./data/slotOne.json";
+    private Workout workout1;
+    private Workout workout2;
     private Scanner input;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -71,9 +73,9 @@ public class WorkoutApp {
             addAthleteComments();
         } else if (command.equals("coach-comments-add")) {
             addCoachComments();
-        } else if (command.equals("save-file")){
+        } else if (command.equals("save-file")) {
             saveWorkout();
-        } else if (command.equals("load-file")){
+        } else if (command.equals("load-file")) {
             loadWorkout();
         } else {
             System.out.println("Invalid selection you baboon >:C \n");
@@ -83,15 +85,15 @@ public class WorkoutApp {
     //MODIFIES: this
     //EFFECTS: initializes workouts
     private void init() {
-        day1 = new Workout("day1", "goodluck!");
-        day2 = new Workout("day2");
+        workout1 = new Workout("day1", "goodluck!");
+        workout2 = new Workout();
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(SLOT_ONE);
+        jsonReader = new JsonReader(SLOT_ONE);
 
-        day1.addExercise("backsquat", 3,5,130);
-        day1.addExercise("snatch", 3,2,65);
-        day1.addExercise("sndeadlift", 3,3,91);
-
-        day2.addExercise("frontsquat", 2,10,30);
+        workout1.addExercise("backsquat", 3,5,130);
+        workout1.addExercise("snatch", 3,2,65);
+        workout1.addExercise("sndeadlift", 3,3,91);
     }
 
     //EFFECTS: displays menu of options to user
@@ -105,6 +107,8 @@ public class WorkoutApp {
         System.out.println("\tcoach-comments-view to view coach comments");
         System.out.println("\tathlete-comments-add to add athlete comments");
         System.out.println("\tcoach-comments-add to add coach comments");
+        System.out.println("\tsave-file to save your workout");
+        System.out.println("\tload-file to load your workout");
         System.out.println("\tquit");
     }
 
@@ -276,15 +280,15 @@ public class WorkoutApp {
         String selection = "";  // force entry into loop
 
         while (!(selection.equals("1") || selection.equals("2"))) {
-            System.out.println("1 for " + day1.getName());
-            System.out.println("2 for " + day2.getName());
+            System.out.println("1 for " + workout1.getName());
+            System.out.println("2 for " + workout2.getName());
             selection = input.next();
         }
 
         if (selection.equals("1")) {
-            return day1;
+            return workout1;
         } else {
-            return day2;
+            return workout2;
         }
     }
 
@@ -292,18 +296,23 @@ public class WorkoutApp {
     private void saveWorkout() {
         try {
             jsonWriter.open();
-            jsonWriter.write();
+            jsonWriter.write(workout2);
             jsonWriter.close();
-            System.out.println("Saved " + workRoom.getName() + " to " + JSON_STORE);
+            System.out.println("Saved " + workout2.getName() + " to " + SLOT_ONE);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            System.out.println("Unable to write to file: " + SLOT_ONE);
         }
     }
 
     //MODIFIES: this
     //EFFECTS: loads workout from file
     private void loadWorkout() {
-
+        try {
+            workout2 = jsonReader.read();
+            System.out.println("Loaded " + workout2.getName() + " from " + SLOT_ONE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + SLOT_ONE);
+        }
     }
 
 }
