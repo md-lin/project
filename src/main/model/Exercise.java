@@ -3,7 +3,13 @@ package model;
 // represents an exercise which includes a name, sets, reps, weight, and a comment from
 // either coach or athlete if applicable
 
-public class Exercise {
+// serialization functionality and methods are implemented from JsonSerializationDemo. Link below:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Exercise implements Writable {
     private String name;
     private int sets;
     private int reps;
@@ -19,6 +25,16 @@ public class Exercise {
         this.weight = weight;
         this.athleteComment = "";
         this.coachComment = "";
+    }
+
+    //EFFECTS: creates an exercise with name, sets, reps, weight, athlete comment, and coach comment
+    public Exercise(String name, int sets, int reps, int weight, String athleteComment, String coachComment) {
+        this.name = name;
+        this.sets = sets;
+        this.reps = reps;
+        this.weight = weight;
+        this.athleteComment = athleteComment;
+        this.coachComment = coachComment;
     }
 
     //MODIFIES: this
@@ -87,4 +103,15 @@ public class Exercise {
         return this.coachComment;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("sets", sets);
+        json.put("reps", reps);
+        json.put("weight", weight);
+        json.put("athleteComment", athleteComment);
+        json.put("coachComment", coachComment);
+        return json;
+    }
 }

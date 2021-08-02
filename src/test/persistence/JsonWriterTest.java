@@ -61,7 +61,7 @@ public class JsonWriterTest extends JsonTest {
             writer.write(wo);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralWorkout.json");
             wo = reader.read();
             assertEquals("get huge", wo.getName());
             assertEquals("beep beep", wo.getAthleteComment());

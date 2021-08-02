@@ -47,7 +47,7 @@ public class JsonReaderTest extends JsonTest{
     //TODO: refactor this test to reflect the test file that you will add (addtest files lol)
     @Test
     void testReaderGeneralWorkout() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkOut.json");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkout.json");
         try {
             Workout wo = reader.read();
             assertEquals("Suffering from success", wo.getName());

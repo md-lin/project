@@ -30,7 +30,7 @@ public class JsonWriter {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workroom to file
+    // EFFECTS: writes JSON representation of workout to file
     public void write(Workout wo) {
         JSONObject json = wo.toJson();
         saveToFile(json.toString(TAB));
@@ -47,5 +47,4 @@ public class JsonWriter {
     private void saveToFile(String json) {
         writer.print(json);
     }
-}
 }

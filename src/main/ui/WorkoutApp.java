@@ -5,17 +5,24 @@ package ui;
 // UI Functionality and methods are implemented from Teller App. Link below:
 // https://github.students.cs.ubc.ca/CPSC210/TellerApp
 
+//saving and loading functionality and methods are implemented from JsonSerializationDemo. Link below:
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 import model.Exercise;
 import model.Workout;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
 public class WorkoutApp {
-
     private Workout day1;
     private Workout day2;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the workout application
     public WorkoutApp() {
@@ -65,9 +72,9 @@ public class WorkoutApp {
         } else if (command.equals("coach-comments-add")) {
             addCoachComments();
         } else if (command.equals("save-file")){
-            //TODO: ADD STUFF
+            saveWorkout();
         } else if (command.equals("load-file")){
-            //TODO: ADD STUFF
+            loadWorkout();
         } else {
             System.out.println("Invalid selection you baboon >:C \n");
         }
@@ -281,5 +288,22 @@ public class WorkoutApp {
         }
     }
 
+    //EFFECTS: saves workout to file
+    private void saveWorkout() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write();
+            jsonWriter.close();
+            System.out.println("Saved " + workRoom.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: loads workout from file
+    private void loadWorkout() {
+
+    }
 
 }
