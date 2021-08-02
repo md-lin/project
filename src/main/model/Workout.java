@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Workout implements Writable {
+    private String slot;
     private String name;
     private String athleteComment;
     private String coachComment;
@@ -70,6 +71,12 @@ public class Workout implements Writable {
         this.coachComment = comment;
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets save slot of workout
+    public void setSlot(String slot) {
+        this.slot = slot;
+    }
+
     //EFFECTS: returns name of workout
     public String getName() {
         return this.name;
@@ -93,6 +100,11 @@ public class Workout implements Writable {
     //EFFECTS: returns number of exercises
     public int numExercises() {
         return exercises.size();
+    }
+
+    //EFFECTS: returns the save slot of the workout
+    public String getSlot() {
+        return slot;
     }
 
     //MODIFIES: this
