@@ -1,0 +1,31 @@
+{
+    "athleteComment": "",
+    "exercises": [
+        {
+            "athleteComment": "",
+            "reps": 5,
+            "sets": 3,
+            "coachComment": "",
+            "name": "backsquat",
+            "weight": 130
+        },
+        {
+            "athleteComment": "",
+            "reps": 2,
+            "sets": 3,
+            "coachComment": "",
+            "name": "snatch",
+            "weight": 65
+        },
+        {
+            "athleteComment": "",
+            "reps": 3,
+            "sets": 3,
+            "coachComment": "",
+            "name": "sndeadlift",
+            "weight": 10000
+        }
+    ],
+    "coachComment": "goodluck!",
+    "name": "day1"
+}

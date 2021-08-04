@@ -1,0 +1,31 @@
+{
+    "athleteComment": "beep beep",
+    "exercises": [
+        {
+            "athleteComment": "",
+            "reps": 3,
+            "sets": 2,
+            "coachComment": "",
+            "name": "squat",
+            "weight": 4
+        },
+        {
+            "athleteComment": "",
+            "reps": 1,
+            "sets": 1,
+            "coachComment": "",
+            "name": "sheep",
+            "weight": 1
+        },
+        {
+            "athleteComment": "",
+            "reps": 7,
+            "sets": 5,
+            "coachComment": "",
+            "name": "deadlift",
+            "weight": 280
+        }
+    ],
+    "coachComment": "i'm a sheep",
+    "name": "get huge"
+}

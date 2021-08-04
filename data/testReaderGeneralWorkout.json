@@ -1,0 +1,31 @@
+{
+  "exercises": [
+    {
+      "name": "bench",
+      "sets": 1,
+      "reps": 8,
+      "weight": 130,
+      "athleteComment": "fire",
+      "coachComment": ""
+    },
+    {
+      "name": "chin-up",
+      "sets": 3,
+      "reps": 5,
+      "weight": 0,
+      "athleteComment": "easy",
+      "coachComment": ""
+    },
+    {
+      "name": "bicep curl",
+      "sets": 3,
+      "reps": 12,
+      "weight": 25,
+      "athleteComment": "yeowch",
+      "coachComment": "have fun"
+    }
+  ],
+  "name": "Suffering from success",
+  "athleteComment": "life is pain",
+  "coachComment": "try harder"
+}

@@ -1,5 +1,7 @@
 package model;
 
+//test package for workout class
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -54,11 +56,27 @@ public class WorkoutTest {
     }
 
     @Test
+    public void setSlotTest() {
+        workout.setSlot("thisistheslot");
+        assertEquals("thisistheslot", workout.getSlot());
+    }
+
+    @Test
     public void addExerciseTest() {
         workout.addExercise("snatch", 1, 1, 90);
 
         List<Exercise> exercises = workout.getExercises();
         assertEquals("snatch", exercises.get(exercises.size() - 1).getName());
+    }
+
+    @Test
+    public void addExerciseWithCommentsTest() {
+        workout.addExercise("boop", 1, 1, 90,"yert", "yuh");
+
+        List<Exercise> exercises = workout.getExercises();
+        assertEquals("boop", exercises.get(exercises.size() - 1).getName());
+        assertEquals("yert", exercises.get(exercises.size() - 1).getAthleteComment());
+        assertEquals("yuh", exercises.get(exercises.size() - 1).getCoachComment());
     }
 
     @Test
@@ -119,5 +137,8 @@ public class WorkoutTest {
     public void findExerciseFalseTest() {
         assertEquals(-1, workout.findExercise("neck curls"));
     }
+
+    @Test
+    public void findExerciseSimilarTest() { assertEquals(-1, workout.findExercise("bicep")); }
 
 }
