@@ -31,6 +31,7 @@ public class WorkoutGUI extends JPanel implements ActionListener {
     private JButton closeCommentButton;
     private JLabel commentLabel;
 
+    //EFFECTS: creates workout panel
     public WorkoutGUI(Workout workout, Color color, int x, int y) {
         super();
         this.workout = workout;
@@ -60,9 +61,13 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         addExerciseSetReps();
         addWeight();
 
-        menuPanelSetup();
+        //comment button setup
+        menuButtonSetup();
+        coachCommentSetup();
+        closeCommentButtonSetup();
     }
 
+    //EFFECTS: sets up workout title panel
     private void panelTitleSetup(JPanel panel, String name) {
         JLabel exName = new JLabel(name);
         exName.setBorder(border);
@@ -70,16 +75,18 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         panel.add(exName);
     }
 
+    //EFFECTS: sets up exercise name panel
     private void namePanelSetup(JPanel panel, Dimension dimension, String layout) {
         panel.setBackground(Color.yellow);
         panel.setPreferredSize(dimension);
         add(panel, layout);
 
         JLabel workoutName = new JLabel(workout.getName());
-        createTitle(workoutName);
+        setTitle(workoutName);
         namePanel.add(workoutName);
     }
 
+    //EFFECTS: sets up setrep, weight, and menu panels
     private void panelSetup() {
         setRepPanel.setBackground(Color.green);
         weightPanel.setBackground(Color.pink);
@@ -98,15 +105,16 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         add(exNamePanel, BorderLayout.WEST);
     }
 
+    //EFFECTS: sets workout panel to color, size, and borderlayout
     private void setPanel(Color color, int x, int y) {
         setBackground(color);
-        setBounds(x,y,500, 900);
+        setBounds(x,y,WIDTH, HEIGHT);
         setLayout(new BorderLayout());
         setVisible(true);
     }
 
-    private void createTitle(JLabel label) {
-
+    //EFFECTS: sets title alignments, font, and border
+    private void setTitle(JLabel label) {
         label.setVerticalTextPosition(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setFont(new Font("Comic Sans", Font.PLAIN, 20));
@@ -114,6 +122,8 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         label.setVisible(true);
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds labels for each exercise name
     private void addExerciseNames() {
         for (Exercise e : workout.getExercises()) {
             JLabel exerciseName = new JLabel(e.getName());
@@ -123,6 +133,8 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds labels for each exercise SET/REP
     private void addExerciseSetReps() {
         for (Exercise e : workout.getExercises()) {
             int sets = e.getSets();
@@ -134,6 +146,8 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds labels for each exercise weight
     private void addWeight() {
         for (Exercise e : workout.getExercises()) {
             JLabel weight = new JLabel(Integer.toString(e.getWeight()));
@@ -143,14 +157,7 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         }
     }
 
-    private void menuPanelSetup() {
-        menuButtonSetup();
-
-        coachCommentSetup();
-
-        closeCommentButtonSetup();
-    }
-
+    //EFFECTS: initializes button to open coach comment
     private void menuButtonSetup() {
         commentButton = new JButton();
         menuPanel.add(commentButton);
@@ -159,6 +166,7 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         commentButton.setFocusable(false);
     }
 
+    //EFFECTS: initializes coach comment label
     private void coachCommentSetup() {
         commentLabel = new JLabel("Coach comment: " + workout.getCoachComment());
         commentLabel.setFont(bodyFont);
@@ -166,6 +174,7 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         exNamePanel.add(commentLabel);
     }
 
+    //EFFECTS: initializes button to close coach comment
     private void closeCommentButtonSetup() {
         closeCommentButton = new JButton();
         menuPanel.add(closeCommentButton);
@@ -175,6 +184,7 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         closeCommentButton.setEnabled(false);
     }
 
+    //EFFECTS: opens/closes coach comments
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == commentButton) {

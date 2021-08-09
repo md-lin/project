@@ -17,6 +17,7 @@ public class WorkoutAppGUI extends JFrame {
     private Workout workout1;
     private Workout workout2;
 
+    //EFFECTS: constructs appgui
     public WorkoutAppGUI() {
         super("IT'S WORKOUT TIME");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
