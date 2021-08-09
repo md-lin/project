@@ -11,8 +11,10 @@ import model.Workout;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class WorkoutGUI extends JPanel {
+public class WorkoutGUI extends JPanel implements ActionListener {
     private static final int WIDTH = 500;
     private static final int HEIGHT = 900;
     private static final Border border = BorderFactory.createLineBorder(Color.black, 2);
@@ -23,6 +25,10 @@ public class WorkoutGUI extends JPanel {
     private JPanel exNamePanel;
     private JPanel setRepPanel;
     private JPanel weightPanel;
+    private JPanel menuPanel;
+    private JButton commentButton;
+    private JButton closeCommentButton;
+    private JLabel commentLabel;
 
     public WorkoutGUI(Workout workout, Color color, int x, int y) {
         super();
@@ -33,17 +39,16 @@ public class WorkoutGUI extends JPanel {
         //namepanel setup
         namePanel = new JPanel(new BorderLayout());
         namePanelSetup(namePanel, new Dimension(100,50), BorderLayout.NORTH);
-        //name panel setup end
 
         //other panel set up
         exNamePanel = new JPanel(bodyLayout);
         setRepPanel = new JPanel(bodyLayout);
         weightPanel = new JPanel(bodyLayout);
+        menuPanel = new JPanel(new GridLayout(1,5,0,5));
 
         panelSetup();
-        //other panel setup end
 
-        //exNamePanel setup
+        //body panel setup
         panelTitleSetup(exNamePanel, "Name");
         panelTitleSetup(setRepPanel, "Sets x Reps");
         panelTitleSetup(weightPanel, "Weight");
@@ -51,9 +56,8 @@ public class WorkoutGUI extends JPanel {
         addExerciseNames();
         addExerciseSetReps();
         addWeight();
-        //exNamePanel setup end
 
-
+        menuPanelSetup();
     }
 
     private void panelTitleSetup(JPanel jPanel, String name) {
@@ -64,7 +68,7 @@ public class WorkoutGUI extends JPanel {
     }
 
     private void namePanelSetup(JPanel panel, Dimension dimension, String layout) {
-        panel.setBackground(Color.cyan);
+        panel.setBackground(Color.yellow);
         panel.setPreferredSize(dimension);
         add(panel, layout);
 
@@ -76,12 +80,15 @@ public class WorkoutGUI extends JPanel {
     private void panelSetup() {
         setRepPanel.setBackground(Color.green);
         weightPanel.setBackground(Color.pink);
+        menuPanel.setBackground(Color.cyan);
 
         setRepPanel.setPreferredSize(new Dimension(75,100));
         weightPanel.setPreferredSize(new Dimension(150,100));
+        menuPanel.setPreferredSize(new Dimension (500, 50));
 
         add(setRepPanel, BorderLayout.CENTER);
         add(weightPanel, BorderLayout.EAST);
+        add(menuPanel, BorderLayout.SOUTH);
 
         exNamePanel.setBackground(Color.pink);
         exNamePanel.setPreferredSize(new Dimension(200,100));
@@ -133,4 +140,48 @@ public class WorkoutGUI extends JPanel {
         }
     }
 
+    private void menuPanelSetup() {
+        menuButtonSetup();
+
+        coachCommentSetup();
+
+        closeCommentButtonSetup();
+    }
+
+    private void menuButtonSetup() {
+        commentButton = new JButton();
+        menuPanel.add(commentButton);
+        commentButton.addActionListener(this);
+        commentButton.setText("View coach comments");
+        commentButton.setFocusable(false);
+    }
+
+    private void coachCommentSetup() {
+        commentLabel = new JLabel("Coach comment: " + workout.getCoachComment());
+        commentLabel.setFont(bodyFont);
+        commentLabel.setVisible(false);
+        exNamePanel.add(commentLabel);
+    }
+
+    private void closeCommentButtonSetup() {
+        closeCommentButton = new JButton();
+        menuPanel.add(closeCommentButton);
+        closeCommentButton.addActionListener(this);
+        closeCommentButton.setText("Close coach comments");
+        closeCommentButton.setFocusable(false);
+        closeCommentButton.setEnabled(false);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==commentButton) {
+            commentLabel.setVisible(true);
+            commentButton.setEnabled(false);
+            closeCommentButton.setEnabled(true);
+        } else if (e.getSource()==closeCommentButton) {
+            commentLabel.setVisible(false);
+            commentButton.setEnabled(true);
+            closeCommentButton.setEnabled(false);
+        }
+    }
 }

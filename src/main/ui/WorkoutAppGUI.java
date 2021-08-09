@@ -20,15 +20,11 @@ public class WorkoutAppGUI extends JFrame {
     public WorkoutAppGUI() {
         super("IT'S WORKOUT TIME");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //TODO: layout manager
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
         setResizable(false);
         setLayout(null);
 
         init();
-
-
-        //TODO: change image icon if you want
 
         //workout panel 1
         JPanel panel1 = new WorkoutGUI(workout1, Color.red, 0, 0);
@@ -43,13 +39,10 @@ public class WorkoutAppGUI extends JFrame {
 
 
         JPanel menu = new JPanel();
-//        menu.add();
-        menu.setBackground(Color.cyan);
+        menu.setBackground(Color.pink);
         menu.setBounds(0,900,1000,100);
         add(menu);
         menu.setVisible(true);
-
-
 
 
         setVisible(true);
@@ -57,29 +50,21 @@ public class WorkoutAppGUI extends JFrame {
 
 
 
-        //TODO: add workout field
-//        WorkoutGUI workoutGUI1 = new WorkoutGUI("day1");
-//        workoutGUI1.setBounds(0,0, 500, HEIGHT);
-//        workoutGUI1.setBackground(Color.blue);
-//
-////        WorkoutGUI workoutGUI2 = new WorkoutGUI("day2");
-////        workoutGUI2.setBounds(FRAME_WIDTH / 2,0, FRAME_WIDTH / 2, HEIGHT);
-////        workoutGUI2.setBackground(Color.yellow);
-////        workoutGUI2.setVisible(true);
-//
-//
-//        add(workoutGUI1);
-//        add(workoutGUI2);
-
-
     }
 
+    //EFFECTS: initializes workouts
     private void init() {
         workout1 = new Workout("day1", "goodluck!");
         workout1.addExercise("backsquat", 3,5,130);
         workout1.addExercise("snatch", 3,2,65);
+        workout1.addExercise("clean",3,100,20000);
         workout1.addExercise("sndeadlift", 3,3,91);
+        workout1.setCoachComment("yo");
 
         workout2 = new Workout("day2");
+        workout2.addExercise("bench", 1, 8, 130);
+        workout2.addExercise("chin-up",3,5,0);
+        workout2.addExercise("bicep curl",3,12,25);
+        workout2.setCoachComment("YO");
     }
 }
