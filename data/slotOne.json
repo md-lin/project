@@ -19,13 +19,21 @@
         },
         {
             "athleteComment": "",
+            "reps": 100,
+            "sets": 3,
+            "coachComment": "",
+            "name": "clean",
+            "weight": 20000
+        },
+        {
+            "athleteComment": "",
             "reps": 3,
             "sets": 3,
             "coachComment": "",
             "name": "sndeadlift",
-            "weight": 10000
+            "weight": 91
         }
     ],
-    "coachComment": "goodluck!",
-    "name": "day1"
+    "coachComment": "yo",
+    "name": "LET'S"
 }

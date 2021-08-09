@@ -1,13 +1,31 @@
 {
     "athleteComment": "",
-    "exercises": [{
-        "athleteComment": "",
-        "reps": 2,
-        "sets": 2,
-        "coachComment": "",
-        "name": "dl",
-        "weight": 2
-    }],
-    "coachComment": "",
-    "name": "day2"
+    "exercises": [
+        {
+            "athleteComment": "",
+            "reps": 8,
+            "sets": 1,
+            "coachComment": "",
+            "name": "bench",
+            "weight": 130
+        },
+        {
+            "athleteComment": "",
+            "reps": 5,
+            "sets": 3,
+            "coachComment": "",
+            "name": "chin-up",
+            "weight": 0
+        },
+        {
+            "athleteComment": "",
+            "reps": 12,
+            "sets": 3,
+            "coachComment": "",
+            "name": "bicep curl",
+            "weight": 25
+        }
+    ],
+    "coachComment": "YO",
+    "name": "GO"
 }
