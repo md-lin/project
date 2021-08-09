@@ -21,6 +21,7 @@ public class WorkoutGUI extends JPanel implements ActionListener {
     private static final Font bodyFont = new Font("Comic Sans", Font.PLAIN, 15);
     private static final GridLayout bodyLayout = new GridLayout(25,1,0,0);
     private Workout workout;
+    private SoundPlayer player;
     private JPanel namePanel;
     private JPanel exNamePanel;
     private JPanel setRepPanel;
@@ -33,6 +34,8 @@ public class WorkoutGUI extends JPanel implements ActionListener {
     public WorkoutGUI(Workout workout, Color color, int x, int y) {
         super();
         this.workout = workout;
+
+        player = new SoundPlayer();
 
         setPanel(color, x, y);
 
@@ -178,6 +181,7 @@ public class WorkoutGUI extends JPanel implements ActionListener {
             commentLabel.setVisible(true);
             commentButton.setEnabled(false);
             closeCommentButton.setEnabled(true);
+            player.playSound();
         } else if (e.getSource()==closeCommentButton) {
             commentLabel.setVisible(false);
             commentButton.setEnabled(true);
