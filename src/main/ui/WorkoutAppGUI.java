@@ -10,7 +10,6 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +33,7 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
     private JMenuItem loadItemTwo;
     private JMenuItem saveItemOne;
     private JMenuItem saveItemTwo;
+    private JMenuItem newExercise;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
@@ -47,7 +47,16 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
 
         init();
 
-        refreshDisplay();
+        panel1 = new WorkoutGUI(workout1, Color.red, 0, 0);
+        add(panel1);
+        panel1.setVisible(true);
+
+        panel2 = new WorkoutGUI(workout2, Color.yellow, 500,0);
+        add(panel2);
+        panel2.setVisible(true);
+
+        menu = new MenuGUI(this);
+        add(menu);
 
         //initialize menu bar
         menuBar = new JMenuBar();
@@ -55,23 +64,23 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
         setJMenuBar(menuBar);
 
         setVisible(true);
-//        pack();
 
     }
 
-    private void refreshDisplay() {
-        //workout panel 1
+    //MODIFIES: this
+    //EFFECTS: refreshes display one
+    private void refreshDisplayOne() {
         panel1 = new WorkoutGUI(workout1, Color.red, 0, 0);
         add(panel1);
         panel1.setVisible(true);
+    }
 
-        //workout panel 2
+    //MODIFIES: this
+    //EFFECTS: refreshes display two
+    private void refreshDisplayTwo() {
         panel2 = new WorkoutGUI(workout2, Color.yellow, 500,0);
         add(panel2);
         panel2.setVisible(true);
-
-        menu = new MenuGUI();
-        add(menu);
     }
 
     //MODIFIES: this
@@ -86,25 +95,39 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
         menuItemSetup();
     }
 
+    //MODIFIES: this
+    //EFFECTS: initializes menu items
     private void menuItemSetup() {
         loadItemOne = new JMenuItem("Load " + workout1.getName());
         loadItemTwo = new JMenuItem("Load " + workout2.getName());
         saveItemOne = new JMenuItem("Save " + workout1.getName());
         saveItemTwo = new JMenuItem("Save " + workout2.getName());
+        newExercise = new JMenuItem("Add exercise to " + workout1.getName());
 
         fileMenu.add(loadItemOne);
         fileMenu.add(loadItemTwo);
         fileMenu.add(saveItemOne);
         fileMenu.add(saveItemTwo);
+        editMenu.add(newExercise);
 
         loadItemOne.addActionListener(this);
         loadItemTwo.addActionListener(this);
         saveItemOne.addActionListener(this);
         saveItemTwo.addActionListener(this);
+        newExercise.addActionListener(this);
     }
 
     //EFFECTS: initializes workouts
     private void init() {
+        workout1 = new Workout("LET'S", "goodluck!");
+        workout1.addExercise("backsquat", 3,5,130);
+        workout1.addExercise("snatch", 3,2,65);
+        workout1.addExercise("clean",3,100,20000);
+        workout1.addExercise("sndeadlift", 3,3,91);
+        workout1.setCoachComment("yo");
+
+        workout2 = new Workout("GO");
+
         jsonWriter = new JsonWriter(SLOT_ONE);
         jsonReader = new JsonReader(SLOT_ONE);
     }
@@ -113,17 +136,25 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loadItemOne) {
             loadWorkoutOne();
-            refreshDisplay();
+            refreshDisplayOne();
         } else if (e.getSource() == loadItemTwo) {
             loadWorkoutTwo();
-            refreshDisplay();
+            refreshDisplayTwo();
         } else if (e.getSource() == saveItemOne) {
             saveWorkout(SLOT_ONE, workout1);
-            refreshDisplay();
+            refreshDisplayOne();
         } else if (e.getSource() == saveItemTwo) {
             saveWorkout(SLOT_TWO, workout2);
-            refreshDisplay();
+            refreshDisplayTwo();
+        } else if (e.getSource() == newExercise) {
+            setNewExercise();
         }
+    }
+
+    //EFFECTS: adds this new exercise to workout1
+    private void setNewExercise() {
+        workout1.addExercise("new exercise!", 3, 100, 20);
+        refreshDisplayOne();
     }
 
     // EFFECTS: saves workout to file
