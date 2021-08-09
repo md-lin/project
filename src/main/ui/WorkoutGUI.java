@@ -63,11 +63,11 @@ public class WorkoutGUI extends JPanel implements ActionListener {
         menuPanelSetup();
     }
 
-    private void panelTitleSetup(JPanel jPanel, String name) {
+    private void panelTitleSetup(JPanel panel, String name) {
         JLabel exName = new JLabel(name);
         exName.setBorder(border);
         exName.setFont(bodyFont);
-        jPanel.add(exName);
+        panel.add(exName);
     }
 
     private void namePanelSetup(JPanel panel, Dimension dimension, String layout) {
@@ -87,7 +87,7 @@ public class WorkoutGUI extends JPanel implements ActionListener {
 
         setRepPanel.setPreferredSize(new Dimension(75,100));
         weightPanel.setPreferredSize(new Dimension(150,100));
-        menuPanel.setPreferredSize(new Dimension (500, 50));
+        menuPanel.setPreferredSize(new Dimension(500, 50));
 
         add(setRepPanel, BorderLayout.CENTER);
         add(weightPanel, BorderLayout.EAST);
@@ -177,12 +177,12 @@ public class WorkoutGUI extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==commentButton) {
+        if (e.getSource() == commentButton) {
             commentLabel.setVisible(true);
             commentButton.setEnabled(false);
             closeCommentButton.setEnabled(true);
             player.playSound();
-        } else if (e.getSource()==closeCommentButton) {
+        } else if (e.getSource() == closeCommentButton) {
             commentLabel.setVisible(false);
             commentButton.setEnabled(true);
             closeCommentButton.setEnabled(false);
