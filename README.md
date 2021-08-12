@@ -35,8 +35,17 @@ As a user, I want to be able to:
 - save my workout to file
 - load my workout from file
 
-Phase 4: Task 2
+## Phase 4: Task 2  
+
 I have included a type hierarchy in my project. ExerciseNamePanel, SetRepPanel, and WeightPanel  
 all extend the abstract class ExerciseDisplayPanel. ExerciseDisplayPanel has an abstract method addLabel  
 which is overwritten in each of the aforementioned classes to write different labels to display different  
 fields of the exercise.
+
+## Phase 4: Task 3
+
+If I had more time to work on my project, I would like to refactor the WorkoutAppGUI class into several  
+classes. Because it currently violates the single responsibility principle, refactoring this class would  
+improve the cohesion of the project. I would likely create a new class that is responsible for the menu  
+bar. There is also significant coupling between the display panel classes as a result of the fixed window  
+size, which I could fix by creating constants in the WorkoutAppGUI and WorkoutGUI classes.

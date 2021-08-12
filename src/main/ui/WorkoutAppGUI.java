@@ -77,14 +77,6 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS: refreshes display two
-    private void refreshDisplayTwo() {
-        panel2 = new WorkoutGUI(workout2, Color.yellow, 500,0);
-        add(panel2);
-        panel2.setVisible(true);
-    }
-
-    //MODIFIES: this
     //EFFECTS: initializes menu bar
     private void menuBarSetup() {
         fileMenu = new JMenu("File");
@@ -172,7 +164,7 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
             jsonWriter.close();
             System.out.println("Saved " + workout.getName() + " to " + slot);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + slot);
+            System.err.println("Unable to write to file: " + slot);
         }
     }
 
@@ -185,7 +177,7 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
             panel1.updateWorkout(workout1);
             System.out.println("Loaded " + workout1.getName() + " from " + SLOT_ONE);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + SLOT_ONE);
+            System.err.println("Unable to read from file: " + SLOT_ONE);
         }
     }
 
@@ -198,7 +190,7 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
             panel2.updateWorkout(workout2);
             System.out.println("Loaded " + workout2.getName() + " from " + SLOT_TWO);
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + SLOT_TWO);
+            System.err.println("Unable to read from file: " + SLOT_TWO);
         }
     }
 
