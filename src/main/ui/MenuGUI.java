@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//menu panel to add an exercise to a workout
+
 public class MenuGUI extends JPanel implements ActionListener {
     private JFrame gui;
     private JButton refresh;

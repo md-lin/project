@@ -34,3 +34,9 @@ As a user, I want to be able to:
 - add comments to workouts
 - save my workout to file
 - load my workout from file
+
+Phase 4: Task 2
+I have included a type hierarchy in my project. ExerciseNamePanel, SetRepPanel, and WeightPanel  
+all extend the abstract class ExerciseDisplayPanel. ExerciseDisplayPanel has an abstract method addLabel  
+which is overwritten in each of the aforementioned classes to write different labels to display different  
+fields of the exercise.

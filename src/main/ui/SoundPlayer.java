@@ -15,7 +15,7 @@ import java.io.File;
 
 public class SoundPlayer extends JFrame {
 
-    //plays sounds and adjusts volume
+    //EFFECTS: plays sounds and adjusts volume
     public void playSound() {
         try {
             AudioInputStream audioInputStream =

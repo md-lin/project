@@ -8,6 +8,7 @@ package ui;
 import model.Workout;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ui.workoutdisplaypanels.WorkoutGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,8 +24,8 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
     private static final String SLOT_TWO = "./data/slotTwo.json";
     private Workout workout1;
     private Workout workout2;
-    private JPanel panel1;
-    private JPanel panel2;
+    private WorkoutGUI panel1;
+    private WorkoutGUI panel2;
     private MenuGUI menu;
     private JMenuBar menuBar;
     private JMenu fileMenu;
@@ -127,28 +128,33 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
         workout1.setCoachComment("yo");
 
         workout2 = new Workout("GO");
+        workout2.addExercise("bench", 1, 8, 130);
+        workout2.addExercise("chin-up",3,5,0);
+        workout2.addExercise("bicep curl",3,12,25);
 
         jsonWriter = new JsonWriter(SLOT_ONE);
         jsonReader = new JsonReader(SLOT_ONE);
     }
 
+    //MODIFIES: this
+    //EFFECTS: loads or saves workout to/from file
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loadItemOne) {
             loadWorkoutOne();
-            refreshDisplayOne();
+            panel1.refreshDisplay();
         } else if (e.getSource() == loadItemTwo) {
             loadWorkoutTwo();
-            refreshDisplayTwo();
+            panel2.refreshDisplay();
         } else if (e.getSource() == saveItemOne) {
             saveWorkout(SLOT_ONE, workout1);
-            refreshDisplayOne();
         } else if (e.getSource() == saveItemTwo) {
             saveWorkout(SLOT_TWO, workout2);
-            refreshDisplayTwo();
         } else if (e.getSource() == newExercise) {
             setNewExercise();
         }
+        validate();
+        repaint();
     }
 
     //EFFECTS: adds this new exercise to workout1
@@ -160,7 +166,6 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
     // EFFECTS: saves workout to file
     private void saveWorkout(String slot, Workout workout) {
         jsonWriter.setDestination(slot);
-
         try {
             jsonWriter.open();
             jsonWriter.write(workout);
@@ -177,6 +182,7 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
         try {
             jsonReader.setSource(SLOT_ONE);
             workout1 = jsonReader.read();
+            panel1.updateWorkout(workout1);
             System.out.println("Loaded " + workout1.getName() + " from " + SLOT_ONE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + SLOT_ONE);
@@ -189,6 +195,7 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
         try {
             jsonReader.setSource(SLOT_TWO);
             workout2 = jsonReader.read();
+            panel2.updateWorkout(workout2);
             System.out.println("Loaded " + workout2.getName() + " from " + SLOT_TWO);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + SLOT_TWO);
