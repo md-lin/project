@@ -29,12 +29,10 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
     private MenuGUI menu;
     private JMenuBar menuBar;
     private JMenu fileMenu;
-    private JMenu editMenu;
     private JMenuItem loadItemOne;
     private JMenuItem loadItemTwo;
     private JMenuItem saveItemOne;
     private JMenuItem saveItemTwo;
-    private JMenuItem newExercise;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
@@ -80,10 +78,8 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
     //EFFECTS: initializes menu bar
     private void menuBarSetup() {
         fileMenu = new JMenu("File");
-        editMenu = new JMenu("Edit");
 
         menuBar.add(fileMenu);
-        menuBar.add(editMenu);
 
         menuItemSetup();
     }
@@ -95,31 +91,28 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
         loadItemTwo = new JMenuItem("Load " + workout2.getName());
         saveItemOne = new JMenuItem("Save " + workout1.getName());
         saveItemTwo = new JMenuItem("Save " + workout2.getName());
-        newExercise = new JMenuItem("Add exercise to " + workout1.getName());
 
         fileMenu.add(loadItemOne);
         fileMenu.add(loadItemTwo);
         fileMenu.add(saveItemOne);
         fileMenu.add(saveItemTwo);
-        editMenu.add(newExercise);
 
         loadItemOne.addActionListener(this);
         loadItemTwo.addActionListener(this);
         saveItemOne.addActionListener(this);
         saveItemTwo.addActionListener(this);
-        newExercise.addActionListener(this);
     }
 
     //EFFECTS: initializes workouts
     private void init() {
-        workout1 = new Workout("LET'S", "goodluck!");
+        workout1 = new Workout("day1", "goodluck!");
         workout1.addExercise("backsquat", 3,5,130);
         workout1.addExercise("snatch", 3,2,65);
         workout1.addExercise("clean",3,100,20000);
         workout1.addExercise("sndeadlift", 3,3,91);
         workout1.setCoachComment("yo");
 
-        workout2 = new Workout("GO");
+        workout2 = new Workout("day2");
         workout2.addExercise("bench", 1, 8, 130);
         workout2.addExercise("chin-up",3,5,0);
         workout2.addExercise("bicep curl",3,12,25);
@@ -142,17 +135,9 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
             saveWorkout(SLOT_ONE, workout1);
         } else if (e.getSource() == saveItemTwo) {
             saveWorkout(SLOT_TWO, workout2);
-        } else if (e.getSource() == newExercise) {
-            setNewExercise();
         }
         validate();
         repaint();
-    }
-
-    //EFFECTS: adds this new exercise to workout1
-    private void setNewExercise() {
-        workout1.addExercise("new exercise!", 3, 100, 20);
-        refreshDisplayOne();
     }
 
     // EFFECTS: saves workout to file
@@ -194,4 +179,53 @@ public class WorkoutAppGUI extends JFrame implements ActionListener {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds an exercise to workout one
+    public void addExerciseOne(String name, int sets, int reps, int weight) {
+        workout1.addExercise(name, sets, reps, weight);
+        updatePanelOne();
+    }
+
+    //MODIFIES: this
+    //EFFECTS: adds an exercise to workout two
+    public void addExerciseTwo(String name, int sets, int reps, int weight) {
+        workout2.addExercise(name, sets, reps, weight);
+        updatePanelTwo();
+
+    }
+
+    //MODIFIES: this
+    //EFFECTS: removes an exercise from workout one
+    public void removeExerciseOne(String name) {
+        workout1.removeExercise(name);
+        updatePanelOne();
+    }
+
+
+    //MODIFIES: this
+    //EFFECTS: removes an exercise from workout two
+    public void removeExerciseTwo(String name) {
+        workout2.removeExercise(name);
+        updatePanelTwo();
+    }
+
+    //MODIFIES: this
+    //EFFECTS: updates panel one
+    private void updatePanelOne() {
+        panel1.updateWorkout(workout1);
+        panel1.refreshDisplay();
+
+        validate();
+        repaint();
+    }
+
+    //MODIFIES: this
+    //EFFECTS: updates panel two
+    private void updatePanelTwo() {
+        panel2.updateWorkout(workout2);
+        panel2.refreshDisplay();
+
+        validate();
+        repaint();
+    }
 }

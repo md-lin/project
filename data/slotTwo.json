@@ -6,7 +6,7 @@
             "reps": 8,
             "sets": 1,
             "coachComment": "",
-            "name": "arjun",
+            "name": "bench",
             "weight": 130
         },
         {
@@ -14,7 +14,7 @@
             "reps": 5,
             "sets": 3,
             "coachComment": "",
-            "name": "knows",
+            "name": "chin-up",
             "weight": 0
         },
         {
@@ -22,10 +22,10 @@
             "reps": 12,
             "sets": 3,
             "coachComment": "",
-            "name": "how to lift",
+            "name": "bicep curl",
             "weight": 25
         }
     ],
-    "coachComment": "YO",
-    "name": "GO"
+    "coachComment": "",
+    "name": "day2"
 }
